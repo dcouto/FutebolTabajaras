@@ -1,0 +1,25 @@
+﻿@model IEnumerable<FutebolTabajaras.Web.ViewModels.TeamViewModel>
+
+@{
+    ViewBag.Title = "Teams";
+}
+
+<h2>Teams</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@foreach (var item in Model)
+{
+    <div>
+        <a href="@Url.Action("Edit", "Teams", new { id = item.ID })"><h3>@Html.DisplayFor(modelItem => item.Name) <span>(@item.CreatedDate.ToString("d"))</span></h3></a>
+
+        <ul class="players">
+            @foreach (var player in item.Players)
+            {
+                <li>@player.FullName</li>
+            }
+        </ul>
+    </div>
+}
